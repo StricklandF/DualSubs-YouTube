@@ -6,9 +6,17 @@ syntax = "proto3";
 message Player {
 	//Context context = 1 [json_name = "context"];
 	//Context context = 1 [json_name = "responseContext"];
-    Captions captions = 10 [json_name = "captions"];
-    message Captions {
-        PlayerCaptionsTracklistRenderer playerCaptionsTracklistRenderer = 51621377 [json_name = "playerCaptionsTracklistRenderer"];
+	//PlaybackTracking playbackTracking = 9;
+	//StreamingData streamingData = 4;
+	Captions captions = 10 [json_name = "captions"];
+	//VideoDetails videoDetails = 11;
+	//repeated Annotations annotations = 13;
+	//Storyboards storyboards = 16;
+	//Attestation attestation = 22;
+	//Endscreen endscreen = 32;
+
+	message Captions {
+		PlayerCaptionsTracklistRenderer playerCaptionsTracklistRenderer = 51621377 [json_name = "playerCaptionsTracklistRenderer"];
 
 		message PlayerCaptionsTracklistRenderer {
 			repeated CaptionTracks captionTracks = 1 [json_name = "captionTracks"];
@@ -31,11 +39,11 @@ message Player {
 				repeated int32 captionTrackIndices = 2 [json_name = "captionTrackIndices", packed = false];
 				optional int32 defaultCaptionTrackIndex = 3 [json_name = "defaultCaptionTrackIndex"];
 				optional int32 forcedCaptionTrackIndex = 4 [json_name = "forcedCaptionTrackIndex"];
-				optional visibilityType visibility = 5 [json_name = "visibility"];
+				optional int32 visibility = 5 [json_name = "visibility"];
 				optional bool hasDefaultTrack = 6 [json_name = "hasDefaultTrack"];
 				optional bool hasForcedTrack = 7 [json_name = "hasForcedTrack"];
 				optional string audioTrackId = 8 [json_name = "audioTrackId"];
-				optional captionsInitialStateType captionsInitialState = 11 [json_name = "captionsInitialState"];
+				optional int32 captionsInitialState = 11 [json_name = "captionsInitialState"];
 			};
 			
 			message TranslationLanguages {
@@ -44,8 +52,8 @@ message Player {
 				//??? ??? = 3 [json_name = "???"];
 			};
 
-        };
-    };
+		};
+	};
 };
 
 message Name {
@@ -53,6 +61,14 @@ message Name {
 	message Runs {
 		string text = 1 [json_name = "text"];
 	};
+};
+/*
+enum ProjectionType {
+	RECTANGULAR = 1;
+};
+
+enum AudioQuality {
+	AUDIO_QUALITY_MEDIUM = 20;
 };
 
 enum visibilityType {
@@ -68,3 +84,4 @@ enum captionsInitialStateType {
 	CAPTIONS_INITIAL_STATE_ON_RECOMMENDED = 3;
 	CAPTIONS_INITIAL_STATE_OFF_RECOMMENDED = 4;
 };
+*/
